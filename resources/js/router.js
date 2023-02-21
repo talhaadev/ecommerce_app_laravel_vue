@@ -53,18 +53,18 @@ let router = new Router({
             }
         },
         {
-            path: "/admin/components/buttons",
-            name: "buttons",
-            component: () => import("./views/admin/buttons.vue"),
+            path: "/admin/catalog/category",
+            name: "category",
+            component: () => import("./views/admin/category/index.vue"),
             meta: {
                 requiresAuth: true,
                 layout: AdminLayout
             }
         },
         {
-            path: "/admin/components/cards",
-            name: "cards",
-            component: () => import("./views/admin/cards.vue"),
+            path: "/admin/catalog/category/add",
+            name: "category",
+            component: () => import("./views/admin/category/add.vue"),
             meta: {
                 requiresAuth: true,
                 layout: AdminLayout

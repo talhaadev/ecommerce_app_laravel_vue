@@ -355,7 +355,13 @@ var render = function() {
                 _c("div", { staticClass: "card-body p-0" }, [
                   _c("div", { staticClass: "row" }, [
                     _c("div", {
-                      staticClass: "col-lg-6 d-none d-lg-block bg-login-image"
+                      staticClass: "col-lg-6 d-none d-lg-block",
+                      staticStyle: {
+                        "background-image":
+                          "url(https://t3.ftcdn.net/jpg/03/39/70/90/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg)",
+                        "background-position": "center",
+                        "background-size": "cover"
+                      }
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-lg-6" }, [

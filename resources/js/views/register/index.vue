@@ -6,7 +6,7 @@
         <div class="card-body p-0">
           <!-- Nested Row within Card Body -->
           <div class="row">
-            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+            <div style="background-image: url(https://t3.ftcdn.net/jpg/03/39/70/90/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg);background-position: center;background-size: cover;" class="col-lg-5 d-none d-lg-block"></div>
             <div class="col-lg-7">
               <div class="p-5">
                 <div class="text-center">

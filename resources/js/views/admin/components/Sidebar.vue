@@ -42,7 +42,7 @@
           aria-controls="collapseTwo"
         >
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Categories</span>
         </a>
         <div
           id="collapseTwo"
@@ -51,9 +51,9 @@
           data-parent="#accordionSidebar"
         >
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <router-link class="collapse-item" to="/admin/components/buttons">Buttons</router-link>
-            <router-link class="collapse-item" to="/admin/components/cards">Cards</router-link>
+            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+            <router-link class="collapse-item" to="/admin/catalog/category/add">Add new</router-link>
+            <router-link class="collapse-item" to="/admin/catalog/category">Category</router-link>
           </div>
         </div>
       </li>
