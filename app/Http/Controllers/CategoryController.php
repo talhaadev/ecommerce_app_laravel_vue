@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class CategoryController extends Controller
 {
@@ -35,20 +37,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // $validated = $request->validate([
-        //     'title' => 'required|unique:category|max:255',
-        //     'slug' => 'required|unique:category|max:255',
-        //     'description' => 'description|max:500',
-        // ]);
-        // echo 'test';exit;
-        $category = new Category([
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'description' => $request->description,
-            // 'image' => $request->input('image')
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'slug' => 'required',
+            'description' => 'required',
+            'image' => 'required',
         ]);
-        $category->save();
-        return response()->json('Category created!');
+
+        if ($validator->fails()) {
+            return response()->json('All fields are required');
+          } else {
+          //process the request
+                  $category = new Category([
+                'title' => $request->title,
+                'slug' => $request->slug,
+                'description' => $request->description,
+                'image' => $request->image
+                
+            ]);
+                $category->save();
+                return response()->json('Category created!');
+          }
+    
     }
 
     /**
