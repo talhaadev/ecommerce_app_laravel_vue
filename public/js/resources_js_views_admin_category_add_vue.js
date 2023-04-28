@@ -44,7 +44,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_LoadingButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/LoadingButton */ "./resources/js/components/LoadingButton.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_LoadingButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/LoadingButton */ "./resources/js/components/LoadingButton.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -107,7 +115,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "category",
   components: {
-    LoadingButton: _components_LoadingButton__WEBPACK_IMPORTED_MODULE_0__.default
+    LoadingButton: _components_LoadingButton__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  data: function data() {
+    return {
+      title: "",
+      slug: "",
+      description: "",
+      image: "",
+      isLoading: false
+    };
+  },
+  methods: {
+    store: function store() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response, message, toast;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this.isLoading = true;
+                _context.prev = 1;
+                _context.next = 4;
+                return axios.post("store", {
+                  title: _this.title,
+                  slug: _this.slug,
+                  description: _this.description,
+                  image: _this.image
+                });
+
+              case 4:
+                response = _context.sent;
+                _this.isLoading = false;
+                message = "Category created.";
+                toast = Vue.toasted.show(message, {
+                  theme: "toasted-primary",
+                  position: "top-right",
+                  duration: 5000
+                });
+
+                _this.$router.push("store");
+
+                _context.next = 15;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](1);
+                notify.authError(_context.t0);
+                _this.isLoading = false;
+
+              case 15:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[1, 11]]);
+      }))();
+    }
   }
 });
 
@@ -325,15 +392,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "form",
-      {
-        staticClass: "user",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.register.apply(null, arguments)
-          }
-        }
-      },
+      { staticClass: "user", on: { submit: _vm.store } },
       [
         _c("div", { staticClass: "form-group row" }, [
           _c("div", { staticClass: "col-sm-6 mb-3 mb-sm-0" }, [
